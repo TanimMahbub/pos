@@ -13,9 +13,9 @@
                     <hr/>
                     <div class="float-end mt-3">
                         <span>
-                            <a class="text-center ms-3 h6" href="{{url('/userRegistration')}}">Sign Up </a>
+                            <a class="text-center ms-3 h6" href="{{url('/signup')}}">Sign Up </a>
                             <span class="ms-1">|</span>
-                            <a class="text-center ms-3 h6" href="{{url('/sendOtp')}}">Forget Password</a>
+                            <a class="text-center ms-3 h6" href="{{url('/forgot-password')}}">Forget Password</a>
                         </span>
                     </div>
                 </div>
@@ -39,10 +39,10 @@
             }
             else{
                 showLoader();
-                let res=await axios.post("/user-login",{email:email, password:password});
-                hideLoader()
+                let res=await axios.post("/login",{email:email, password:password});
+                hideLoader();
                 if(res.status===200 && res.data['status']==='success'){
-                    window.location.href="/dashboard";
+                    window.location.href="/admin";
                 }
                 else{
                     errorToast(res.data['message']);

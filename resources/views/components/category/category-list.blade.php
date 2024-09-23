@@ -36,10 +36,8 @@ getList();
 
 
 async function getList() {
-
-
     showLoader();
-    let res=await axios.get("/list-category");
+    let res=await axios.get("/category-list");
     hideLoader();
 
     let tableList=$("#tableList");
@@ -61,11 +59,9 @@ async function getList() {
     })
 
     $('.editBtn').on('click', async function () {
-           let id= $(this).data('id');
-           await FillUpUpdateForm(id)
-           $("#update-modal").modal('show');
-
-
+        let id= $(this).data('id');
+        await FillUpUpdateForm(id)
+        $("#update-modal").modal('show');
     })
 
     $('.deleteBtn').on('click',function () {
@@ -78,9 +74,6 @@ async function getList() {
        order:[[0,'desc']],
        lengthMenu:[5,10,15,20,30]
    });
-
 }
-
-
 </script>
 

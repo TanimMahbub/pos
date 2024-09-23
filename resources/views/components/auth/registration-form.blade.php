@@ -68,7 +68,7 @@
         }
         else{
             showLoader();
-            let res=await axios.post("/user-registration",{
+            let res=await axios.post("/signup",{
                 email:email,
                 firstName:firstName,
                 lastName:lastName,
@@ -79,7 +79,7 @@
             if(res.status===200 && res.data['status']==='success'){
                 successToast(res.data['message']);
                 setTimeout(function (){
-                    window.location.href='/userLogin'
+                    window.location.href='/login'
                 },2000)
             }
             else{
