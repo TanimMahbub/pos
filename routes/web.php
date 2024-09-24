@@ -51,5 +51,10 @@ Route::middleware([TokenVerificationMiddleware::class])->group(function () {
     });
     Route::controller(ProductController::class)->group(function () {
         Route::get('/products', 'ProductPage');
+        Route::get('/product-list', 'ProductList');
+        Route::post('/create-product', 'ProductCreate');
+        Route::post('/update-product', 'ProductUpdate');
+        Route::post('/product-by-id', 'ProductByID');
+        Route::post('/delete-product', 'ProductDelete');
     });
 });

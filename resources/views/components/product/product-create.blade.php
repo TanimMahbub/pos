@@ -52,7 +52,7 @@
     FillCategoryDropDown();
 
     async function FillCategoryDropDown(){
-        let res = await axios.get("/list-category")
+        let res = await axios.get("/category-list")
         res.data.forEach(function (item,i) {
             let option=`<option value="${item['id']}">${item['name']}</option>`
             $("#productCategory").append(option);
@@ -108,6 +108,7 @@
             if(res.status===201){
                 successToast('Request completed');
                 document.getElementById("save-form").reset();
+                document.getElementById("newImg").src= "{{asset('images/default.jpg')}}";
                 await getList();
             }
             else{

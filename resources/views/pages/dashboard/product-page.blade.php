@@ -1,4 +1,5 @@
 @extends('layout.sidenav-layout')
+@section('title', 'All Products')
 @section('content')
     @include('components.product.product-list')
     @include('components.product.product-delete')
