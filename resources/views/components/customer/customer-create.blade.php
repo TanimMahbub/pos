@@ -51,7 +51,11 @@
             document.getElementById('modal-close').click();
 
             showLoader();
-            let res = await axios.post("/create-customer",{name:customerName,email:customerEmail,mobile:customerMobile})
+            let res = await axios.post("/create-customer",{
+                name:customerName,
+                email:customerEmail,
+                mobile:customerMobile
+            })
             hideLoader();
 
             if(res.status===201){

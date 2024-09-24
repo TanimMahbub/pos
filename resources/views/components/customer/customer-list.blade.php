@@ -19,7 +19,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody id="tableList">
@@ -52,7 +52,7 @@
                     <td>${item['name']}</td>
                     <td>${item['email']}</td>
                     <td>${item['mobile']}</td>
-                    <td>
+                    <td class="text-center">
                         <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>

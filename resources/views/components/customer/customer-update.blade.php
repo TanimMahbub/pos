@@ -71,7 +71,12 @@
 
             showLoader();
 
-            let res = await axios.post("/update-customer",{name:customerName,email:customerEmail,mobile:customerMobile,id:updateID})
+            let res = await axios.post("/update-customer",{
+                name:customerName,
+                email:customerEmail,
+                mobile:customerMobile,
+                id:updateID
+            })
 
             hideLoader();
 

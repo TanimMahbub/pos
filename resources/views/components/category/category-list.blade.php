@@ -17,7 +17,7 @@
                 <tr class="bg-light">
                     <th>No</th>
                     <th>Category</th>
-                    <th>Action</th>
+                    <th class="text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody id="tableList">
@@ -50,7 +50,7 @@ async function getList() {
         let row=`<tr>
                     <td>${index+1}</td>
                     <td>${item['name']}</td>
-                    <td>
+                    <td class="text-center">
                         <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>

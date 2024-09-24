@@ -11,7 +11,7 @@ class CustomerController extends Controller
         return view('pages.dashboard.customer-page');
     }
 
-    function CategoryCreate(Request $request) {
+    function CustomerCreate(Request $request) {
         $user_id = $request->header('id');
         return Customer::create([
             'name' => $request->input('name'),
@@ -21,14 +21,30 @@ class CustomerController extends Controller
         ]);
     }
 
-    function CategoryList(Request $request) {
+    function CustomerList(Request $request) {
         $user_id = $request->header('id');
         return Customer::where('user_id', $user_id)->get();
     }
 
-    function CategoryByID(Request $request) {}
+    function CustomerByID(Request $request) {
+        $customer_id = $request->input('id');
+        $user_id = $request->header('id');
+        return Customer::where('id', $customer_id)->where('user_id', $user_id)->first();
+    }
 
-    function CategoryDelete(Request $request) {}
+    function CustomerDelete(Request $request) {
+        $customer_id = $request->input('id');
+        $user_id = $request->header('id');
+        return Customer::where('id', $customer_id)->where('user_id', $user_id)->delete();
+    }
 
-    function CategoryUpdate(Request $request) {}
+    function CustomerUpdate(Request $request) {
+        $customer_id = $request->input('id');
+        $user_id = $request->header('id');
+        return Customer::where('id', $customer_id)->where('user_id', $user_id)->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'mobile' => $request->input('mobile')
+        ]);
+    }
 }

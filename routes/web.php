@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +35,11 @@ Route::middleware([TokenVerificationMiddleware::class])->group(function () {
     });
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/customers', 'CustomerPage');
-        Route::get('/customer-list', 'CategoryList');
-        Route::post('/create-customer', 'CategoryCreate');
+        Route::get('/customer-list', 'CustomerList');
+        Route::post('/create-customer', 'CustomerCreate');
+        Route::post('/update-customer', 'CustomerUpdate');
+        Route::post('/customer-by-id', 'CustomerByID');
+        Route::post('/delete-customer', 'CustomerDelete');
     });
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/categories', 'CategoryPage');
@@ -44,5 +48,8 @@ Route::middleware([TokenVerificationMiddleware::class])->group(function () {
         Route::post('/update-category', 'CategoryUpdate');
         Route::post('/category-by-id', 'CategoryByID');
         Route::post('/delete-category', 'CategoryDelete');
+    });
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/products', 'ProductPage');
     });
 });
