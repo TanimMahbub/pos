@@ -45,9 +45,9 @@
 
         tableData.DataTable().destroy();
         tableList.empty();
-
+        let row = '';
         res.data.forEach(function(item, index) {
-            let row = `<tr>
+            row+= `<tr>
                     <td>${index+1}</td>
                     <td>${item['name']}</td>
                     <td>${item['email']}</td>
@@ -57,8 +57,8 @@
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`
-            tableList.append(row)
         })
+        tableList.append(row)
 
         $('.editBtn').on('click', async function() {
             let id = $(this).data('id');

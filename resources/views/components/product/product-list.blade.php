@@ -14,6 +14,7 @@
             <table class="table" id="tableData">
                 <thead>
                 <tr class="bg-light">
+                    <th>No</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Price</th>
@@ -47,20 +48,21 @@ async function getList() {
 
     tableData.DataTable().destroy();
     tableList.empty();
-
+    let row = '';
     res.data.forEach(function (item,index) {
-        let row=`<tr>
-                    <td><img class="w-15 h-auto" alt="" src="${item['img_url']}"></td>
-                    <td>${item['name']}</td>
-                    <td>${item['price']}</td>
-                    <td>${item['unit']}</td>
-                    <td>
-                        <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
-                        <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
-                    </td>
-                 </tr>`
-        tableList.append(row)
+        row+=`<tr>
+                <td>${index+1}</td>
+                <td><img class="w-15 h-auto" alt="" src="${item['img_url']}"></td>
+                <td>${item['name']}</td>
+                <td>${item['price']}</td>
+                <td>${item['unit']}</td>
+                <td>
+                    <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                    <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
+                </td>
+            </tr>`
     })
+    tableList.append(row)
 
     $('.editBtn').on('click', async function () {
            let id= $(this).data('id');

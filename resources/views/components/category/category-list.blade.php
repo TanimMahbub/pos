@@ -45,18 +45,18 @@ async function getList() {
 
     tableData.DataTable().destroy();
     tableList.empty();
-
+    let row = '';
     res.data.forEach(function (item,index) {
-        let row=`<tr>
-                    <td>${index+1}</td>
-                    <td>${item['name']}</td>
-                    <td class="text-center">
-                        <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
-                        <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
-                    </td>
-                 </tr>`
-        tableList.append(row)
+        row+=`<tr>
+                <td>${index+1}</td>
+                <td>${item['name']}</td>
+                <td class="text-center">
+                    <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                    <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
+                </td>
+                </tr>`
     })
+    tableList.append(row)
 
     $('.editBtn').on('click', async function () {
         let id= $(this).data('id');
