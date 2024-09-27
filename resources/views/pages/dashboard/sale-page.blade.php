@@ -1,4 +1,5 @@
 @extends('layout.sidenav-layout')
+@section('title', 'Sales')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -90,9 +91,6 @@
 
         </div>
     </div>
-
-
-
 
     <div class="modal animated zoomIn" id="create-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered">
@@ -227,7 +225,7 @@
            else{
                let item={product_name:PName,product_id:PId,qty:PQty,sale_price:PTotalPrice};
                InvoiceItemList.push(item);
-               console.log(InvoiceItemList);
+            //    console.log(InvoiceItemList);
                $('#create-modal').modal('hide')
                ShowInvoiceItem();
            }
@@ -245,7 +243,7 @@
 
 
         async function CustomerList(){
-            let res=await axios.get("/list-customer");
+            let res=await axios.get("/customer-list");
             let customerList=$("#customerList");
             let customerTable=$("#customerTable");
             customerTable.DataTable().destroy();
@@ -282,7 +280,7 @@
 
 
         async function ProductList(){
-            let res=await axios.get("/list-product");
+            let res=await axios.get("/product-list");
             let productList=$("#productList");
             let productTable=$("#productTable");
             productTable.DataTable().destroy();
@@ -312,9 +310,6 @@
                 lengthChange: false
             });
         }
-
-
-
       async  function createInvoice() {
             let total=document.getElementById('total').innerText;
             let discount=document.getElementById('discount').innerText
@@ -345,7 +340,7 @@
                 let res=await axios.post("/invoice-create",Data)
                 hideLoader();
                 if(res.data===1){
-                    window.location.href='/invoicePage'
+                    window.location.href='/invoices'
                     successToast("Invoice Created");
                 }
                 else{

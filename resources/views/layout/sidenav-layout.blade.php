@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>@yield('title')</title>
-    <link href="{{asset('/favicon.ico')}}" type="image/x-icon" rel="shortcut icon"/>
+    <link href="{{asset('/favicon.png')}}" type="image/x-icon" rel="shortcut icon"/>
 
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
@@ -64,37 +64,37 @@
 
 <div id="sideNavRef" class="side-nav-open">
 
-    <a href="{{url('/admin')}}" class="side-bar-item">
+    <a href="{{url('/admin')}}" class="side-bar-item @if(Request::path() == 'admin') active @endif">
         <i class="bi bi-graph-up"></i>
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
-    <a href="{{url('/customers')}}" class="side-bar-item">
+    <a href="{{url('/customers')}}" class="side-bar-item @if(Request::path() == 'customers') active @endif">
         <i class="bi bi-people"></i>
         <span class="side-bar-item-caption">Customer</span>
     </a>
 
-    <a href="{{url('/categories')}}" class="side-bar-item">
+    <a href="{{url('/categories')}}" class="side-bar-item @if(Request::path() == 'categories') active @endif">
         <i class="bi bi-list-nested"></i>
         <span class="side-bar-item-caption">Category</span>
     </a>
 
-    <a href="{{url('/products')}}" class="side-bar-item">
+    <a href="{{url('/products')}}" class="side-bar-item @if(Request::path() == 'products') active @endif">
         <i class="bi bi-bag"></i>
         <span class="side-bar-item-caption">Product</span>
     </a>
 
-    <a href="{{url('/salePage')}}" class="side-bar-item">
+    <a href="{{url('/sales')}}" class="side-bar-item @if(Request::path() == 'sales') active @endif">
         <i class="bi bi-currency-dollar"></i>
         <span class="side-bar-item-caption">Create Sale</span>
     </a>
 
-    <a href="{{url('/invoicePage')}}" class="side-bar-item">
+    <a href="{{url('/invoices')}}" class="side-bar-item @if(Request::path() == 'invoices') active @endif">
         <i class="bi bi-receipt"></i>
         <span class="side-bar-item-caption">Invoice</span>
     </a>
 
-    <a href="{{url('/reportPage')}}" class="side-bar-item">
+    <a href="{{url('/reportPage')}}" class="side-bar-item @if(Request::path() == 'reportPage') active @endif">
         <i class="bi bi-file-earmark-bar-graph"></i>
         <span class="side-bar-item-caption">Report</span>
     </a>

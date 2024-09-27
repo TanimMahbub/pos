@@ -7,7 +7,7 @@
                     <h5>Invoices</h5>
                 </div>
                 <div class="align-items-center col">
-                    <a    href="{{url("/salePage")}}" class="float-end btn m-0 bg-gradient-primary">Create Sale</a>
+                    <a href="{{url("/sales")}}" class="float-end btn m-0 bg-gradient-primary">Create Sale</a>
                 </div>
             </div>
             <hr class="bg-dark "/>
@@ -42,7 +42,7 @@ async function getList() {
 
 
     showLoader();
-    let res=await axios.get("/invoice-select");
+    let res=await axios.get("/invoice-list");
     hideLoader();
 
     let tableList=$("#tableList");
