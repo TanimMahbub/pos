@@ -81,14 +81,15 @@
         invoiceTable.DataTable().destroy();
         invoiceList.empty();
 
+        let row = '';
         res.data['product'].forEach(function (item,index) {
-            let row=`<tr class="text-xs">
+            row+= `<tr class="text-xs">
                         <td>${item['product']['name']}</td>
                         <td>${item['qty']}</td>
                         <td>${item['sale_price']}</td>
                      </tr>`
-            invoiceList.append(row)
         });
+        invoiceList.append(row)
 
         $("#details-modal").modal('show')
     }
