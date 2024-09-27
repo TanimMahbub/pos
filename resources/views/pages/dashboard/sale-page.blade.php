@@ -126,23 +126,16 @@
 
 
     <script>
-
-
         (async ()=>{
           showLoader();
           await  CustomerList();
           await ProductList();
           hideLoader();
         })()
-
-
         let InvoiceItemList=[];
 
-
         function ShowInvoiceItem() {
-
             let invoiceList=$('#invoiceList');
-
             invoiceList.empty();
 
             InvoiceItemList.forEach(function (item,index) {
@@ -156,14 +149,11 @@
             })
 
             CalculateGrandTotal();
-
             $('.remove').on('click', async function () {
                 let index= $(this).data('index');
                 removeItem(index);
             })
-
         }
-
 
         function removeItem(index) {
             InvoiceItemList.splice(index,1);
@@ -203,7 +193,6 @@
             document.getElementById('discount').innerText=Discount;
         }
 
-
         function add() {
            let PId= document.getElementById('PId').value;
            let PName= document.getElementById('PName').value;
@@ -225,14 +214,10 @@
            else{
                let item={product_name:PName,product_id:PId,qty:PQty,sale_price:PTotalPrice};
                InvoiceItemList.push(item);
-            //    console.log(InvoiceItemList);
                $('#create-modal').modal('hide')
                ShowInvoiceItem();
            }
         }
-
-
-
 
         function addModal(id,name,price) {
             document.getElementById('PId').value=id
@@ -240,7 +225,6 @@
             document.getElementById('PPrice').value=price
             $('#create-modal').modal('show')
         }
-
 
         async function CustomerList(){
             let res=await axios.get("/customer-list");
@@ -278,7 +262,6 @@
             });
         }
 
-
         async function ProductList(){
             let res=await axios.get("/product-list");
             let productList=$("#productList");
@@ -310,7 +293,8 @@
                 lengthChange: false
             });
         }
-      async  function createInvoice() {
+        
+        async  function createInvoice() {
             let total=document.getElementById('total').innerText;
             let discount=document.getElementById('discount').innerText
             let vat=document.getElementById('vat').innerText
@@ -349,10 +333,5 @@
             }
 
         }
-
     </script>
-
-
-
-
 @endsection

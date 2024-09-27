@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReportController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,10 @@ Route::controller(UserController::class)->group(function () {
 });
 
 Route::middleware([TokenVerificationMiddleware::class])->group(function () {
-    Route::get('/admin', [DashboardController::class,'Dashboard']);
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/admin', [DashboardController::class,'Dashboard']);
+        Route::get('/summary', [DashboardController::class,'Summary']);
+    });
     Route::controller(UserController::class)->group(function () {
         Route::post('/resetPassword', 'resetPassword');
         Route::post('/update-profile', 'UpdateProfile');
@@ -65,5 +69,10 @@ Route::middleware([TokenVerificationMiddleware::class])->group(function () {
         Route::post('/invoice-create', 'InvoiceCreate');
         Route::post('/invoice-details', 'InvoiceDetails');
         Route::post('/invoice-delete', 'InvoiceDelete');
+    });
+    
+    Route::controller(InvoiceController::class)->group(function () {
+        Route::get('/reportPage',[ReportController::class,'ReportPage']);
+        Route::get("/sales-report/{FormDate}/{ToDate}",[ReportController::class,'SalesReport']);
     });
 });
