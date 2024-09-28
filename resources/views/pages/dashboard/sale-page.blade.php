@@ -232,18 +232,16 @@
             let customerTable=$("#customerTable");
             customerTable.DataTable().destroy();
             customerList.empty();
-
+            let row = '';
             res.data.forEach(function (item,index) {
-                let row=`<tr class="text-xs">
+                row+= `<tr class="text-xs">
                         <td><i class="bi bi-person"></i> ${item['name']}</td>
                         <td><a data-name="${item['name']}" data-email="${item['email']}" data-id="${item['id']}" class="btn btn-outline-dark addCustomer  text-xxs px-2 py-1  btn-sm m-0">Add</a></td>
                      </tr>`
-                customerList.append(row)
             })
-
+            customerList.append(row)
 
             $('.addCustomer').on('click', async function () {
-
                 let CName= $(this).data('name');
                 let CEmail= $(this).data('email');
                 let CId= $(this).data('id');
@@ -251,7 +249,6 @@
                 $("#CName").text(CName)
                 $("#CEmail").text(CEmail)
                 $("#CId").text(CId)
-
             })
 
             new DataTable('#customerTable',{
@@ -268,15 +265,14 @@
             let productTable=$("#productTable");
             productTable.DataTable().destroy();
             productList.empty();
-
+            let row = '';
             res.data.forEach(function (item,index) {
-                let row=`<tr class="text-xs">
+                row+= `<tr class="text-xs">
                         <td> <img class="w-10" src="${item['img_url']}"/> ${item['name']} ($ ${item['price']})</td>
                         <td><a data-name="${item['name']}" data-price="${item['price']}" data-id="${item['id']}" class="btn btn-outline-dark text-xxs px-2 py-1 addProduct  btn-sm m-0">Add</a></td>
                      </tr>`
-                productList.append(row)
             })
-
+            productList.append(row)
 
             $('.addProduct').on('click', async function () {
                 let PName= $(this).data('name');
@@ -284,7 +280,6 @@
                 let PId= $(this).data('id');
                 addModal(PId,PName,PPrice)
             })
-
 
             new DataTable('#productTable',{
                 order:[[0,'desc']],
